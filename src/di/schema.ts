@@ -5,4 +5,4 @@ import ConfigStore from "../features/config/stores/ConfigStore";
 // make:feature schema-export
 export type { ConfigStore };
 export type { ThemeStore };
-export type { };
+export type {};

@@ -13,6 +13,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "axios": "^0.27.2",
     "inversify": "^6.0.1",
     "mobx": "^6.6.1",
     "mobx-react": "^7.5.1",
