@@ -3,9 +3,17 @@ import React from "react";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import container from "./di/container";
 import { observer } from "mobx-react";
+import ThemeProvider from "./features/theme/ThemeProvider";
+import { Button } from "@mui/material";
 
 const App = () => {
-  return <div data-testid="app"></div>;
+  return (
+    <ThemeProvider>
+      <div data-testid="app">
+        <Button>Hello World</Button>
+      </div>
+    </ThemeProvider>
+  );
 };
 
 export default observer(App);
