@@ -25,11 +25,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prestart": "yarn build:configs",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:scripts": "tsc ./scripts/*.ts --outDir ./scripts/build",
-    "postinstall": "yarn build:scripts",
+    "build:configs": "tsc ./configs/*.config.ts --outDir ./configs/build && node ./scripts/build/build-config.js",
+    "postinstall": "yarn build:scripts && yarn build:configs",
+    "tsc-cli": "tsc",
     "make:feature": "node ./scripts/build/make-feature.js --name "
   },
   "eslintConfig": {

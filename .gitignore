@@ -11,6 +11,8 @@
 # production
 /build
 /scripts/build
+/public/configs/*.config.json
+/configs/build/
 
 # misc
 .DS_Store

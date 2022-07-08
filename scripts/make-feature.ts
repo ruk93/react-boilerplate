@@ -136,3 +136,4 @@ const init = (args: Args) => {
 };
 
 init(argv);
+export {};
