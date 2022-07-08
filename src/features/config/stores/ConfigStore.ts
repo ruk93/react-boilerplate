@@ -1,6 +1,6 @@
 import { inject, injectable } from "inversify";
 import { action, makeObservable, observable } from "mobx";
-import { Config } from "../schema";
+import type { Config } from "../schema";
 import { ApiServiceType } from "../../../di/types";
 import type { ApiService } from "../../../di/schema";
 
@@ -14,7 +14,7 @@ export enum ConfigVariant {
 class ConfigStore {
   @observable loaded: boolean = false;
   @observable error: boolean = false;
-  config: Config | null = null;
+  @observable config!: Config;
 
   @inject<ApiService>(ApiServiceType)
   apiService!: ApiService;
