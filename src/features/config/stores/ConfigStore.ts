@@ -1,7 +1,8 @@
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 import { action, makeObservable, observable } from "mobx";
 import { Config } from "../schema";
-import axios from "axios";
+import { ApiServiceType } from "../../../di/types";
+import type { ApiService } from "../../../di/schema";
 
 export const ConfigStoreType = Symbol.for("ConfigStore");
 
@@ -15,6 +16,9 @@ class ConfigStore {
   @observable error: boolean = false;
   config: Config | null = null;
 
+  @inject<ApiService>(ApiServiceType)
+  apiService!: ApiService;
+
   constructor() {
     makeObservable(this);
   }
@@ -25,7 +29,7 @@ class ConfigStore {
     signal?: AbortSignal
   ) {
     try {
-      const response = await axios.get<Config>(
+      const response = await this.apiService.get<Config>(
         `/configs/${variant}.config.json`,
         {
           signal,
