@@ -6,7 +6,15 @@ const NotificationProvider: React.FC<PropsWithChildren<{}>> = ({
 }) => {
   return (
     <React.Fragment>
-      <SnackbarProvider maxSnack={3}>{children}</SnackbarProvider>
+      <SnackbarProvider
+        maxSnack={3}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "center",
+        }}
+      >
+        {children}
+      </SnackbarProvider>
     </React.Fragment>
   );
 };

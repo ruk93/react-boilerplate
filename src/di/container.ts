@@ -1,7 +1,7 @@
 import { Container } from "inversify";
 import ThemeModules from "../features/theme/di";
 import ConfigModules from "../features/config/di";
-import ApiServiceModules from "../features/apiService/di";
+import ApiServiceModules from "../features/api/di";
 import NotificationModules from "../features/notification/di";
 // make:feature module-import
 

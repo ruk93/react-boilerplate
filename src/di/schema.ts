@@ -1,6 +1,6 @@
 import ThemeStore from "../features/theme/stores/ThemeStore";
 import ConfigStore from "../features/config/stores/ConfigStore";
-import ApiService from "../features/apiService/ApiService";
+import ApiService from "../features/api/ApiService";
 import NotificationService from "../features/notification/NotificationService";
 // make:feature schema-import
 
