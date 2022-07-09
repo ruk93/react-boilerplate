@@ -1,8 +1,8 @@
 import { ContainerModule, interfaces } from "inversify";
-import NotificationStore, { NotificationStoreType } from "./stores/NotificationStore";
+import NotificationService, { NotificationServiceType } from "./NotificationService";
     
 const diModules = new ContainerModule((bind: interfaces.Bind, unbind : interfaces.Unbind) => {
-    bind<NotificationStore>(NotificationStoreType).to(NotificationStore);
+    bind<NotificationService>(NotificationServiceType).to(NotificationService);
 });
     
 export default diModules;

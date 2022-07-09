@@ -1,5 +1,5 @@
 // make:feature type-export
-export { NotificationStoreType } from "../features/notification/stores/NotificationStore";
+export { NotificationServiceType } from "../features/notification/NotificationService";
 export { ApiServiceType } from "../features/apiService/ApiService";
 export { ConfigStoreType } from "../features/config/stores/ConfigStore";
 export { ThemeStoreType } from "../features/theme/stores/ThemeStore";
