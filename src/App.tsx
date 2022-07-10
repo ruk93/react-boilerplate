@@ -8,17 +8,20 @@ import ConfigurationProvider from "./features/config/containers/ConfigurationPro
 import HelloWorldContainer from "./features/helloWorld/containers/HelloWorld";
 import NotificationProvider from "./features/notification/NotificationProvider";
 import SnackbarUtilsConfigurator from "./features/notification/SnackbarUtilsConfigurator";
+import TranslationProvider from "./features/translations/TranslationProvider";
 
 const App = () => {
   return (
     <ConfigurationProvider key="config-provider">
       <ThemeProvider>
-        <NotificationProvider>
-          <SnackbarUtilsConfigurator />
-          <div data-testid="app">
-            <HelloWorldContainer />
-          </div>
-        </NotificationProvider>
+        <TranslationProvider>
+          <NotificationProvider>
+            <SnackbarUtilsConfigurator />
+            <div data-testid="app">
+              <HelloWorldContainer />
+            </div>
+          </NotificationProvider>
+        </TranslationProvider>
       </ThemeProvider>
     </ConfigurationProvider>
   );
