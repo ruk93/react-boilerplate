@@ -3,23 +3,31 @@ import React, { PropsWithChildren, useEffect } from "react";
 import container from "../../../di/container";
 import type { ConfigStore } from "../../../di/schema";
 import { ConfigStoreType } from "../../../di/types";
-import ThemeProvider from "../../theme/ThemeProvider";
 import { ErrorLoadingConfig, LoadingConfig } from "../components/loaders";
 import { ConfigVariant } from "../stores/ConfigStore";
+import { createTheme, ThemeProvider as MuiThemeProvider } from "@mui/material";
 
-const ConfigurationProvider: React.FC<PropsWithChildren<{}>> = ({
-  children,
-}) => {
+const ThemeProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
+  return (
+    <React.Fragment>
+      <MuiThemeProvider theme={createTheme()}>{children}</MuiThemeProvider>
+    </React.Fragment>
+  );
+};
+
+const ConfigurationProvider: React.FC<
+  PropsWithChildren<{ variant: ConfigVariant }>
+> = ({ children, variant }) => {
   const configStore = container.get<ConfigStore>(ConfigStoreType);
 
   useEffect(() => {
     const controller = new AbortController();
     configStore.loaded === false &&
-      configStore.loadConfig(ConfigVariant.default, controller.signal);
+      configStore.loadConfig(variant, controller.signal);
     return () => {
       controller.abort();
     };
-  }, [configStore]);
+  }, [configStore, variant]);
 
   if (configStore.error) {
     return (

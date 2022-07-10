@@ -9,10 +9,11 @@ import HelloWorldContainer from "./features/helloWorld/containers/HelloWorld";
 import NotificationProvider from "./features/notification/NotificationProvider";
 import SnackbarUtilsConfigurator from "./features/notification/SnackbarUtilsConfigurator";
 import TranslationProvider from "./features/translations/TranslationProvider";
+import { ConfigVariant } from "./features/config/stores/ConfigStore";
 
 const App = () => {
   return (
-    <ConfigurationProvider key="config-provider">
+    <ConfigurationProvider variant={ConfigVariant.default} key="config-provider">
       <ThemeProvider>
         <TranslationProvider>
           <NotificationProvider>

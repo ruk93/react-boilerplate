@@ -9,7 +9,11 @@ const ThemeProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   const themeStore = container.get<ThemeStore>(ThemeStoreType);
 
   return (
-    <MuiThemeProvider theme={themeStore.theme}>{children}</MuiThemeProvider>
+    <React.Fragment>
+      {!!themeStore.theme && (
+        <MuiThemeProvider theme={themeStore.theme}>{children}</MuiThemeProvider>
+      )}
+    </React.Fragment>
   );
 };
 

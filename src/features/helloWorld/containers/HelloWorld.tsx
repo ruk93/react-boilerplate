@@ -10,6 +10,7 @@ import {
   ConfigStoreType,
   NotificationServiceType,
 } from "../../../di/types";
+import { ConfigVariant } from "../../config/stores/ConfigStore";
 import useTranslation from "../../translations/hooks/useTranslation";
 
 const HelloWorldContainer: React.FC = () => {
@@ -44,6 +45,22 @@ const HelloWorldContainer: React.FC = () => {
         onClick={() => service.changeLanguage("de")}
       >
         German
+      </Button>
+
+      <Typography>
+        {t("hello-world,change-config", "Change Config")}
+      </Typography>
+      <Button
+        variant="outlined"
+        onClick={() => configStore.loadConfig(ConfigVariant.default)}
+      >
+        Default
+      </Button>{" "}
+      <Button
+        variant="outlined"
+        onClick={() => configStore.loadConfig(ConfigVariant.sample)}
+      >
+        Sample
       </Button>
     </React.Fragment>
   );

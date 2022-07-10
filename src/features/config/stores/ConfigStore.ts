@@ -8,6 +8,7 @@ export const ConfigStoreType = Symbol.for("ConfigStore");
 
 export enum ConfigVariant {
   default = "default",
+  sample = "sample"
 }
 
 @injectable()
@@ -37,7 +38,7 @@ class ConfigStore {
       );
       this.setLoaded(true);
       this.setError(false);
-      this.config = response.data;
+      this.setConfig(response.data);
     } catch (e) {
       this.setError(true);
       this.setLoaded(false);
@@ -52,5 +53,11 @@ class ConfigStore {
   setError(action: boolean) {
     this.error = action;
   }
+
+  @action
+  private setConfig(config: Config){
+      this.config = config;
+  }
+
 }
 export default ConfigStore;

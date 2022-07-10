@@ -1,23 +1,43 @@
 import { createTheme } from "@mui/material";
 import type { ThemeOptions, Theme } from "@mui/material";
-import { injectable } from "inversify";
-import { action, makeObservable, observable } from "mobx";
+import { inject, injectable } from "inversify";
+import { action, computed, makeObservable } from "mobx";
+import { ConfigStoreType } from "../../../di/types";
+import type { ConfigStore } from "../../../di/schema";
 
 export const ThemeStoreType = Symbol.for("ThemeStore");
 
 @injectable()
 class ThemeStore {
-  @observable theme!: Theme;
+  private themeOptions: ThemeOptions = {};
+
+  @inject(ConfigStoreType)
+  configStore!: ConfigStore;
 
   constructor() {
     makeObservable(this);
-    this.generateTheme();
+  }
+
+  @computed
+  get primaryColor() {
+    return this.configStore.config.primaryColor;
+  }
+
+  @computed
+  get theme(): Theme {
+    return createTheme({
+      palette: {
+        primary: {
+          main: this.primaryColor,
+        },
+      },
+      ...this.themeOptions,
+    });
   }
 
   @action
-  generateTheme(themeOptions?: ThemeOptions) {
-    this.theme = createTheme(themeOptions);
-    return this.theme;
+  setThemeOptions(themeOptions: ThemeOptions) {
+    this.themeOptions = themeOptions;
   }
 }
 export default ThemeStore;
