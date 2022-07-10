@@ -5,12 +5,10 @@ import container from "../../../di/container";
 import {
   ConfigStore,
   NotificationService,
-  TranslationsService,
 } from "../../../di/schema";
 import {
   ConfigStoreType,
   NotificationServiceType,
-  TranslationsServiceType,
 } from "../../../di/types";
 import useTranslation from "../../translations/hooks/useTranslation";
 
@@ -19,11 +17,8 @@ const HelloWorldContainer: React.FC = () => {
   const notifications = container.get<NotificationService>(
     NotificationServiceType
   );
-  const translations = container.get<TranslationsService>(
-    TranslationsServiceType
-  );
 
-  const { t } = useTranslation();
+  const { t, service } = useTranslation();
   return (
     <React.Fragment>
       <Typography>hello world from {configStore.config.name}</Typography>
@@ -39,14 +34,14 @@ const HelloWorldContainer: React.FC = () => {
       </Typography>
       <Button
         variant="outlined"
-        onClick={() => translations.changeLanguage("en")}
+        onClick={() => service.changeLanguage("en")}
       >
         English
       </Button>
       {" "}
       <Button
         variant="outlined"
-        onClick={() => translations.changeLanguage("de")}
+        onClick={() => service.changeLanguage("de")}
       >
         German
       </Button>
