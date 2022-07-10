@@ -23,6 +23,7 @@ const HelloWorldContainer: React.FC = () => {
   return (
     <React.Fragment>
       <Typography>hello world from {configStore.config.name}</Typography>
+      <img src={configStore.config.primaryLogo} alt="logo" />
       <Button
         onClick={() =>
           notifications.success(t("hello-world.toast.success", "Hello World."))

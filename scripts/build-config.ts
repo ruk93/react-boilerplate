@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require('path');
 
-const configPath = path.join(__dirname,"../../configs/build/");
-const configFile = (file:string) => path.join(__dirname,"../../configs/build/",file);
+const configPath = path.join(__dirname,"../../configs/build/configs");
+const configFile = (file:string) => path.join(__dirname,"../../configs/build/configs",file);
 
 const configs = fs.readdirSync(configPath).filter(fn => fn.endsWith('.config.js'));
 
