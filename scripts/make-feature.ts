@@ -8,9 +8,7 @@ const argv = yargs(hideBin(process.argv)).argv;
 const storeTemplate = (name: string) => {
   return `import { injectable } from "inversify";
 import { action, makeObservable, observable } from "mobx";
-    
-export const ${name}StoreType = Symbol.for("${name}Store");
-    
+   
 @injectable()
 class ${name}Store {
 
@@ -30,7 +28,8 @@ export default ${name}Store;`;
 
 const diModuleTemplate = (name: string) => {
   return `import { ContainerModule, interfaces } from "inversify";
-import ${name}Store, { ${name}StoreType } from "./stores/${name}Store";
+import ${name}Store from "./stores/${name}Store";
+import { ${name}StoreType } from "../../di/types";
     
 const diModules = new ContainerModule((bind: interfaces.Bind, unbind : interfaces.Unbind) => {
     bind<${name}Store>(${name}StoreType).to(${name}Store);
@@ -67,9 +66,8 @@ export type { ${pascalCase}Store };`;
 
 const typeExportTemplate = (name: string) => {
   const pascalCase = changeCase.pascalCase(name);
-  const camelCase = changeCase.camelCase(name);
   return `// make:feature type-export
-export { ${pascalCase}StoreType } from "../features/${camelCase}/stores/${pascalCase}Store";`;
+export const ${pascalCase}StoreType = Symbol.for("${pascalCase}Store");`;
 };
 
 const replaceContent = (file: string, search: string, content: string) => {
