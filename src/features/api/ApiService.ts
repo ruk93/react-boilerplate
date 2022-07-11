@@ -4,7 +4,6 @@ import axios, {
   AxiosResponse,
   AxiosStatic,
 } from "axios";
-export const ApiServiceType = Symbol.for("ApiService");
 
 @injectable()
 class ApiService {

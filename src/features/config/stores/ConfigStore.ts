@@ -4,8 +4,6 @@ import type { Config } from "../schema";
 import { ApiServiceType } from "../../../di/types";
 import type { ApiService } from "../../../di/schema";
 
-export const ConfigStoreType = Symbol.for("ConfigStore");
-
 export enum ConfigVariant {
   default = "default",
   sample = "sample"

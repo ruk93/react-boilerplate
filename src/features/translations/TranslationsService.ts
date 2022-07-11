@@ -1,9 +1,6 @@
 import { injectable } from "inversify";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-
-export const TranslationsServiceType = Symbol.for("TranslationsService");
-
 @injectable()
 class TranslationsService {
   private i18n: typeof i18n;

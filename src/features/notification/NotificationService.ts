@@ -6,8 +6,6 @@ import type {
   SnackbarKey,
   VariantType,
 } from "notistack";
-export const NotificationServiceType = Symbol.for("NotificationService");
-
 @injectable()
 class NotificationService {
   notifications?: ProviderContext;

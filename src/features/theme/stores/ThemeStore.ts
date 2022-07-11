@@ -5,8 +5,6 @@ import { action, computed, makeObservable } from "mobx";
 import { ConfigStoreType } from "../../../di/types";
 import type { ConfigStore } from "../../../di/schema";
 
-export const ThemeStoreType = Symbol.for("ThemeStore");
-
 @injectable()
 class ThemeStore {
   private themeOptions: ThemeOptions = {};

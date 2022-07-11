@@ -1,7 +1,7 @@
 // make:feature type-export
-export { TranslationsServiceType } from "../features/translations/TranslationsService";
-export { NotificationServiceType } from "../features/notification/NotificationService";
-export { ApiServiceType } from "../features/api/ApiService";
-export { ConfigStoreType } from "../features/config/stores/ConfigStore";
-export { ThemeStoreType } from "../features/theme/stores/ThemeStore";
+export const TranslationsServiceType = Symbol.for("TranslationsServiceType");
+export const NotificationServiceType = Symbol.for("NotificationServiceType");
+export const ApiServiceType = Symbol.for("ApiServiceType"); 
+export const ConfigStoreType = Symbol.for("ConfigStoreType");
+export const ThemeStoreType = Symbol.for("ThemeStoreType");
 export {};
