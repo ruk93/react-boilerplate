@@ -1,5 +1,6 @@
 export type Config = {
   name: string;
   primaryColor: string;
-  primaryLogo : string;
+  primaryLogo: string;
+  defaultLanguage: string;
 };

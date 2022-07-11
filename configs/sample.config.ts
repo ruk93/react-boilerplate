@@ -4,6 +4,7 @@ const sampleConfig: Config = {
   name: "Sample Config",
   primaryColor: "#294C60",
   primaryLogo: "/assets/sample/logo.svg",
+  defaultLanguage: "de",
 };
 
 export default sampleConfig;
